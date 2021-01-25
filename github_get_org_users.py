@@ -27,9 +27,27 @@ import json
 # Time stamps to files
 from datetime import datetime
 
+# For creating requests to GitHub API
 import requests
 
 from modules.conf_parser import ConfParser
+
+
+def get_org_members(conf: ConfParser = None):
+    
+    if conf == None or not isinstance(conf, ConfParser):
+        print("No conf given.")
+        return
+
+
+    headers= {'Auhorization' : 'token ' + conf.get_access_token(),
+                'Accept': 'application/vnd.github.v3+json'}
+    url = conf.get_org_url()
+    print(url)
+    response = requests.get(url, headers)
+
+    return response
+
 
 def main():
     arguments = docopt(__doc__, version='GitHub Get Org Users 0.1')
@@ -38,6 +56,10 @@ def main():
 
     print("Loaded configuration:")
     config.print_conf()
+
+    resp_org = get_org_members(config)
+    print(resp_org)
+
 
 if __name__ == '__main__':
     main()

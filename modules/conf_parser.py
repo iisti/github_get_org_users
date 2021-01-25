@@ -31,7 +31,10 @@ class ConfParser:
     def get_org_url(self):
         """Returns the URL for retrieving organisation information."""
 
-        return self.config['Data']['org_url']
+        tmp_str = self.config['Data']['org_url'].replace("MY_ORGANISATION",
+                self.get_organisation_name())
+
+        return tmp_str
     
     def get_users_url(self):
         """Returns the URL for retrieving users information."""
