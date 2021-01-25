@@ -22,6 +22,11 @@ class ConfParser:
         """
 
         self.config.read(conf_file)
+    
+    def get_user(self):
+        """Returns user defined in configuration file."""
+        
+        return self.config['Data']['user']
 
     def get_access_token(self):
         """Returns token in configuration file."""

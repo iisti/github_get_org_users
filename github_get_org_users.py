@@ -40,14 +40,30 @@ def get_org_members(conf: ConfParser = None):
         return
 
 
-    headers= {'Auhorization' : 'token ' + conf.get_access_token(),
-                'Accept': 'application/vnd.github.v3+json'}
-    url = conf.get_org_url()
-    print(url)
-    response = requests.get(url, headers)
+    auth=(conf.get_user(),conf.get_access_token()) 
+    headers = {'Accept': 'application/vnd.github.v3+json'}
+    url = "https://api.github.com/orgs/{}/members".format(conf.get_organisation_name())
+    response = requests.get(url, headers=headers, auth=auth)
 
     return response
 
+def get_user_info(conf: ConfParser = None, username: str = None):
+
+    if conf == None or not isinstance(conf, ConfParser):
+        print("No conf given.")
+        return
+    
+    if username == None or not isinstance(username, str):
+        print("No username given.")
+        return
+
+    auth=(conf.get_user(),conf.get_access_token()) 
+    headers = {'Accept': 'application/vnd.github.v3+json'}
+    
+    url = "https://api.github.com/users/" + username
+    response = requests.get(url, headers=headers)
+
+    return response
 
 def main():
     arguments = docopt(__doc__, version='GitHub Get Org Users 0.1')
@@ -57,9 +73,9 @@ def main():
     print("Loaded configuration:")
     config.print_conf()
 
-    resp_org = get_org_members(config)
-    print(resp_org)
-
+    print(get_org_members(config).json())
+    
+    print(get_user_info(config, "YaraOmran").json())
 
 if __name__ == '__main__':
     main()
