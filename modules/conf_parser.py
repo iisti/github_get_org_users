@@ -48,4 +48,7 @@ class ConfParser:
 
         for each_section in self.config.sections():
             for (key, val) in self.config.items(each_section):
-                print(key, "=", val)
+                if key == "access_token":
+                    print(key, "=", "<CENSORED>")
+                else:
+                    print(key, "=", val)
