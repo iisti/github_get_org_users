@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+# For logging into file
+import logging
+
 # JSON handling
 import json
 
@@ -69,7 +74,7 @@ def write_json_dump(json_obj: list = None,
     file_out = output_path + file_name + "_" + \
             datetime.now().strftime("%Y%m%d-%H%M%S") + \
             ".json"
-    logging.info("    Writing JSON: " + file_out)
+    logging.info("Writing JSON: " + file_out)
     with open(file_out, 'w') as outfile:
         json.dump(json_obj, outfile, indent=4, ensure_ascii=False)
 

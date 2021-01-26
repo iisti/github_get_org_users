@@ -55,6 +55,22 @@ class ConfParser:
 
         return self.config['Data']['log_path']
     
+    def get_output_path(self):
+        """Return output path.
+        
+        Returns
+        -------
+        str
+            log output path.
+        """
+
+        return self.config['Data']['output_path']
+   
+    def get_real_names_json(self):
+        """Returns path to JSON file which contains real names of GitHub users."""
+        
+        return self.config['Data']['real_names_json']
+
     def get_user(self):
         """Returns user defined in configuration file."""
         
