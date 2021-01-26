@@ -21,7 +21,7 @@ def open_json(file_name: str = None):
         logging.error("Func: {} no file_name given.".format(inspect.stack()[0][3]))
         return
 
-    logging.info("Opening JSON file: " + file_name)
+    logging.debug("Opening JSON file: " + file_name)
     json_file = ""
     try:
         with open(file_name, 'r') as f:

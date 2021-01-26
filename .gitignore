@@ -132,7 +132,7 @@ dmypy.json
 virtualenv/
 *.swp
 
-output/*.json
+output/*
 !output/real_names_example.json
 logs/*.log
 
