@@ -32,7 +32,4 @@ A Python program to retrieve GitHub organisation users.
 1. Install modules
         
         # Remember to activate virtualenv before
-        # docopt for documentation
-        # requests for making requests to GitHub API
-        pip3 install docopt requests
-
+        pip3 install -r requirements.txt
