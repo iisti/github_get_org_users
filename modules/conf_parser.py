@@ -33,7 +33,6 @@ class ConfParser:
 
         log_level = self.config['Data']['log_level']
         if log_level.lower() == "debug":
-            print(type(logging.DEBUG))
             return logging.DEBUG
         elif log_level.lower() == "info":
             return logging.INFO
