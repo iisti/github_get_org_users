@@ -151,7 +151,7 @@ def check_for_unknown_users(conf: ConfParser = None, json_dict: dict = None):
 def write_csv(conf: ConfParser = None, json_dict: dict = None):
     """Writes GitHub login names and real names into CSV file."""
 
-    file_out = conf.get_output_path() + "github_users_" + \
+    file_out = conf.get_output_path() + "github_known_users_" + \
             datetime.now().strftime("%Y%m%d-%H%M%S") + ".csv"
     
     logging.info("Writing CSV: " + file_out)
@@ -189,8 +189,8 @@ def main():
     if unknown_users_dict:
         json_ops.write_json_dump(unknown_users_dict, "github_unknown_users", config.get_output_path())
 
-    # Write a JSON file including all organisation members.
-    json_ops.write_json_dump(login_name_dict, "github_all_users", config.get_output_path())
+    # Write a JSON file including known organisation members.
+    json_ops.write_json_dump(login_name_dict, "github_known_users", config.get_output_path())
 
     # Write a CSV file
     write_csv(config, login_name_dict)
