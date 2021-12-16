@@ -133,8 +133,8 @@ virtualenv/
 *.swp
 
 output/*
-!output/real_names_example.json
 logs/*.log
+real_names.json
 
 # Don't commit config.ini as it contains test confs.
 # config_example.ini is commited.
