@@ -1,4 +1,4 @@
-# github_get_org_users
+# GitHub Get Organisation Users
 A Python program to retrieve GitHub organisation users.
 
 ## Development instructions
